@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "item_id")
+@Table(name = "item")
 @Getter
 @Setter
 @ToString
