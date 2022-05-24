@@ -27,7 +27,7 @@ class ItemRepositoryTest {
         Item item = new Item();
         item.setItemNm("테스트 상품");
         item.setPrice(10000);
-        item.setItemDetall("테스트 상품 상세 설명");
+        item.setItemDetail("테스트 상품 상세 설명");
         item.setItemSellStatus(ItemSellStatus.SELL);
         item.setStockNumber(100);
         item.setRegTime(LocalDateTime.now());
@@ -41,7 +41,7 @@ class ItemRepositoryTest {
             Item item = new Item();
             item.setItemNm("테스트 상품" + i);
             item.setPrice(10000 + i);
-            item.setItemDetall("테스트 상품 상세 설명" + i);
+            item.setItemDetail("테스트 상품 상세 설명" + i);
             item.setItemSellStatus(ItemSellStatus.SELL);
             item.setStockNumber(100);
             item.setRegTime(LocalDateTime.now());
@@ -55,6 +55,19 @@ class ItemRepositoryTest {
     public void findByItemNmTest(){
         this.createItemList();
         List<Item> itemList = itemRepository.findByItemNm("테스트 상품1");
+
+        for (Item item :
+                itemList) {
+            System.out.println(item.toString());
+        }
+
+    }
+
+    @Test
+    @DisplayName("상품명 or 상품 상세 설명 테스트")
+    public void findByItemNmOrItemDetail(){
+        this.createItemList();
+        List<Item> itemList = itemRepository.findByItemNmOrItemDetail("테스트 상품1", "테스트 상품 상세 설명 5");
 
         for (Item item :
                 itemList) {
